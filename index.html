@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Turn your PDFs, Word documents and images into the format you need.">
+  <meta name="theme-color" content="#090c18">
+  <title>Fileform — A fresh format</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body data-state="empty">
+  <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="topbar"><a class="brand" href="/" aria-label="Fileform home"><span class="brand-icon" aria-hidden="true">↔</span>fileform<span class="brand-period">.</span></a><span class="header-note">PDF <span>/</span> WORD <span>/</span> IMAGES</span></header>
+  <main>
+    <section class="intro" aria-labelledby="page-title"><span class="eyebrow"><span aria-hidden="true">✦</span> LESS FRICTION. MORE FLOW.</span><h1 id="page-title">Your files. <span>A fresh format.</span></h1><p>Drop it in. Switch it up. Download and go.</p></section>
+    <section class="workspace" aria-label="File conversion">
+      <div class="upload-panel">
+        <div class="section-label"><span class="step">01</span><h2>Drop your file</h2><span class="limit">UP TO 10 MB</span></div>
+        <div id="dropzone" class="dropzone">
+          <div class="upload-emblem" aria-hidden="true"><div class="orbit"></div><span class="upload-symbol">↑</span></div>
+          <h3>Start with a file</h3><p>Drag it here, or pick one below.</p>
+          <button id="browse" class="browse" type="button">Choose a file <span aria-hidden="true">↗</span></button>
+          <input id="file" type="file" accept=".pdf,.jpg,.jpeg,.png,.docx" hidden>
+          <span class="formats"><span>PDF</span><span>DOCX</span><span>JPG</span><span>PNG</span></span>
+        </div>
+        <div id="selected" class="selected" hidden><span class="file-icon" aria-hidden="true">✓</span><div class="file-detail"><strong id="filename"></strong><span id="filesize"></span></div><button id="remove" type="button" aria-label="Remove selected file">×</button></div>
+        <p class="privacy"><span aria-hidden="true">◷</span> Temporary files clear automatically after one hour.</p>
+      </div>
+      <div class="settings-panel">
+        <div class="section-label"><span class="step">02</span><h2>Make the switch</h2></div>
+        <label for="conversion">Your new format</label>
+        <select id="conversion" disabled aria-describedby="format-note"><option value="">Choose a file first</option></select>
+        <p id="format-note" class="format-note">We’ll show the formats that work with your file.</p>
+        <div class="output-preview"><div class="preview-label"><span class="output-label">READY WHEN YOU ARE</span><span class="preview-spark" aria-hidden="true">✦</span></div><p id="next-step">Your next format is one upload away.</p><div class="mini-path" aria-hidden="true"><span id="source-format">FILE</span><span class="path-line"></span><span id="target-format">NEW FORMAT</span></div></div>
+        <button id="convert" class="convert" type="button" disabled><span id="convert-label">Convert & download</span><span aria-hidden="true">↗</span></button>
+        <div id="progress" hidden role="status" aria-live="polite"><div class="progress-copy"><span class="spinner" aria-hidden="true"></span><p id="progress-text">Converting your file…</p></div><progress aria-label="File conversion in progress"></progress></div>
+        <div id="status" role="alert"></div>
+        <div id="result" hidden role="status" aria-live="polite"><div class="success-heading"><span class="success-check" aria-hidden="true">✓</span><div><p class="success-title">Fresh format. All yours.</p><p class="success-subtitle">Your download should start automatically.</p></div></div><a id="download" class="download">Download again <span aria-hidden="true">↓</span></a><p id="warning"></p></div>
+      </div>
+    </section>
+    <div class="flow-steps" aria-label="Conversion steps"><span id="step-upload" class="current"><b>01</b> Upload</span><span class="flow-line" aria-hidden="true"></span><span id="step-convert"><b>02</b> Convert</span><span class="flow-line" aria-hidden="true"></span><span id="step-download"><b>03</b> Download</span></div>
+    <section class="supported" aria-label="Supported conversions"><div class="conversion-grid"><div><span class="type-icon coral" aria-hidden="true">P</span><div><strong>PDF <span>→</span> JPEG</strong><p>Each page, picture ready.</p></div></div><div><span class="type-icon mint" aria-hidden="true">I</span><div><strong>Image <span>→</span> PDF</strong><p>Your image, in a document.</p></div></div><div><span class="type-icon blue" aria-hidden="true">W</span><div><strong>Word <span>→</span> PDF</strong><p>Reflowed and ready to share.</p></div></div><div><span class="type-icon violet" aria-hidden="true">T</span><div><strong>PDF <span>→</span> Word</strong><p>Text you can edit again.</p></div></div></div></section>
+  </main>
+  <footer><span>Small switch. Big possibilities.</span><span>One file at a time. All four formats.</span></footer>
+</body>
+</html>
