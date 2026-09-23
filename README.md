@@ -147,6 +147,24 @@ Public deployment needs HTTPS, authentication or rate limiting, and isolated con
 workers with appropriate memory, disk and request limits. Do not serve `uploads/` or
 `converted/` as public static folders. Keep the process running for timed cleanup.
 
+## Deploy on Render
+
+Create a **Web Service** with the **Docker** runtime. Use the repository branch
+containing this project. The Docker build context must be the folder containing
+`Dockerfile`, `app.py`, `templates/` and `static/`. Leave the Docker command override
+empty to use the Gunicorn command in the Dockerfile.
+
+If the logs report `jinja2.exceptions.TemplateNotFound: index.html`, the server
+started but could not load the homepage. Check that the deployed commit includes
+`templates/index.html` with that exact lowercase spelling (Linux is case-sensitive).
+This Dockerfile explicitly copies the templates and static assets, then checks that
+the homepage, CSS and JavaScript return HTTP 200 during the image build.
+
+Commit and push the updated files to the branch connected to Render, then deploy
+that latest commit. Confirm the commit shown in Render matches the one you pushed.
+If necessary, use **Manual Deploy > Clear build cache & deploy**. A successful local
+test does not confirm that Render is using the same commit or build context.
+
 ## Verification
 
 All four conversions were exercised with native executable lookup disabled, including
