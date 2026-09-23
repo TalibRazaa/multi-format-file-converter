@@ -95,6 +95,18 @@ def index():
     return render_template('index.html')
 
 
+# --- TEMPORARY DEBUG ROUTE: remove this once the template issue is solved ---
+@app.get('/debug-files')
+def debug_files():
+    return jsonify(
+        base_dir=str(BASE),
+        base_contents=os.listdir(BASE),
+        templates_exists=(BASE / 'templates').exists(),
+        templates_contents=os.listdir(BASE / 'templates') if (BASE / 'templates').exists() else 'MISSING'
+    )
+# --- END TEMPORARY DEBUG ROUTE ---
+
+
 @app.post('/upload')
 def upload():
     # Never use a supplied filename as a filesystem path.
